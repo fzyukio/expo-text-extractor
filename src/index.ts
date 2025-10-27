@@ -13,6 +13,19 @@ import ExpoTextExtractorModule from './ExpoTextExtractorModule';
 export const isSupported = ExpoTextExtractorModule.isSupported;
 
 /**
+ * Checks if ML Kit text recognition is available and ready to use.
+ *
+ * @returns {Promise<{available: boolean, downloading: boolean}>} A promise that resolves with availability status.
+ */
+export async function checkMLKitAvailability(): Promise<{
+  available: boolean;
+  downloading: boolean;
+  playServicesUnavailable?: boolean;
+}> {
+  return ExpoTextExtractorModule.checkAvailability();
+}
+
+/**
  * Extracts text from an image.
  *
  * @param {string} uri - The URI of the image to extract text from.

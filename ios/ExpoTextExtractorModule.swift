@@ -9,6 +9,11 @@ public class ExpoTextExtractorModule: Module {
             "isSupported": true
         ])
 
+        AsyncFunction("checkAvailability") { (promise: Promise) in
+            // iOS Vision framework is always available
+            promise.resolve(["available": true, "downloading": false])
+        }
+
         AsyncFunction("extractTextFromImage") { (url: URL, promise: Promise) in
             do {
                 let imageData = try Data(contentsOf: url)
